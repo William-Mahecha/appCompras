@@ -25,7 +25,7 @@ const routes: Routes = [
   { path: 'addprovee', component: AddproveeComponent },
   { path: 'addpres', component: AddpresComponent},
   { path: 'presupuestos', component: PresupuestosComponent },
-  { path: 'editpres/:id', component: PresupuestosComponent },
+  { path: 'editpres/:id', component: EditpresComponent },
   { path: '**', component: InicioComponent},
   
   ];

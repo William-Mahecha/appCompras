@@ -7,7 +7,7 @@ import { map } from "rxjs/operators";
 })
 export class PresupuestosService {
   presURL = 'https://appcompras1214.firebaseio.com/presupuestos.json';
-  preURL = 'https://comprasapp-83618.firebaseio.com/presupuestos';
+  preURL = 'https://appcompras1214.firebaseio.com/presupuestos';
   constructor(private http: Http) {}
 
   postPresupuesto( presupuesto: any) {
@@ -48,5 +48,11 @@ export class PresupuestosService {
     }))
   }
 
+  delPresupuesto ( id$: string ) {
+    const url = `${ this.preURL }/${ id$ }.json`;
+    return this.http.delete( url )
+      .pipe(map( res => res.json()));
+  }
+  
 
 }
