@@ -5,14 +5,20 @@
   <a class="navbar-brand" href="#">Compras App</a>
   <div class="collapse navbar-collapse" id="containerNavbar">
     <ul class="navbar-nav mr-auto w-100 justify-content-end">
-      <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+      <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" *ngIf="isAuth()">
         <a class="nav-link" routerLink="/" >Inicio</a>
       </li>
-      <li class="nav-item" routerLinkActive="active">
+      <li class="nav-item" routerLinkActive="active" *ngIf="isAuth()">
         <a class="nav-link" routerLink="/proveedores">Proveedores</a>
       </li>
-      <li class="nav-item" routerLinkActive="active">
+      <li class="nav-item" routerLinkActive="active" *ngIf="isAuth()">
         <a class="nav-link" routerLink="/presupuestos">Presupuestos </a>
+      </li>
+      <li class="nav-item" *ngIf="!isAuth()">
+        <button class="btn btn-primary float-md-right" routerLink="/iniciosesion">Inicie sesión</button>
+      </li> 
+      <li class="nav-item" *ngIf="isAuth()">
+        <button class="btn btn-primary float-md-right" (click)="onLogout()">Cerrar sesión</button> 
       </li>
     </ul>
   </div>
