@@ -1,23 +1,41 @@
 <h3>Listado de Proveedores</h3>
-<a class="btn btn-primary float-md-right" routerLink="/addprovee">Añadir
-  nuevo proveedor</a>
-  <br>
-<table class="table table-bordered table-striped tabla" 
-            style="margin-top: 40px;">  
-  <thead>
-    <tr class="filters">
-      <th>Nombre</th>
-      <th>Correo Electrónico</th>
-      <th>Telefono</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let proveedor of proveedores">
-      <td>{{ proveedor.nombre }}</td>
-      <td><a href="mailto:{{ proveedor.email }}">{{ proveedor.email }}</a></td>
-      <td>{{ proveedor.telefono }}</td>
-    </tr>
-  </tbody>
-</table>
-
-
+<a class="btn btn-primary float-md-right" routerLink="/addprovee">Añadir nuevo proveedor</a>
+<br>
+<input type="search" class="form-control" placeholder="Teclee un Proveedor..." [formControl]=" campoBusqueda">
+<div *ngIf="cargando" class="text-center" style="padding-top: 60px;">
+  <img src="../../../assets/spinner.gif">
+</div>
+<div *ngIf="!cargando"> 
+    
+  <table class="table table-bordered table-striped tabla" style="margin-top: 40px;">  
+    <thead>
+      <tr class="filters">
+        <th>Nombre</th>
+        <th>Direccion</th>
+        <th>Telefono</th>
+        <th>Ciudad</th>
+        <th>Correo Electrónico</th>
+        <th>Editar</th>
+        <th>Eliminar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let proveedor of proveedores">
+        <td>{{ proveedor.nombre }}</td>
+        <td>{{ proveedor.direccion }}</td>
+        <td>{{ proveedor.ciudad }}</td>
+        <td>{{ proveedor.telefono }}</td>
+        <td>{{ proveedor.email }}</td>
+        <td>
+          <button type="button" class="btn btn-success" routerLink="/editprovee/{{ proveedor.id$ }}">Editar</button>
+        </td>
+        <td>
+          <button class="btn btn-danger" (click)="eliminarProveedor(proveedor.id$)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div> 
+<div *ngIf="noresultados">
+  <p>No existe ninguna coincidencia</p>
+</div>

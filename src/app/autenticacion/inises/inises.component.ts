@@ -10,6 +10,7 @@ import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 })
 export class InisesComponent implements OnInit {
 
+  autenticando = false;
   loginForm: FormGroup;
   userdata: any;
   mensaje = false;
@@ -31,14 +32,17 @@ export class InisesComponent implements OnInit {
   }
 
   onSubmit() {
+    this.autenticando = true;
     this.userdata = this.saveUserdata();
     this.autService.inicioSesion(this.userdata);
     setTimeout(() => {
       if (this.isAuth() === false) {
-        this.mensaje = true
+        this.mensaje = true;
+        this.autenticando = false;
       }
     }, 2000);
   }
+
  
 
   saveUserdata() {

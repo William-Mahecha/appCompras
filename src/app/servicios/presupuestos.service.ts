@@ -53,6 +53,4 @@ export class PresupuestosService {
     return this.http.delete( url )
       .pipe(map( res => res.json()));
   }
-  
-
 }

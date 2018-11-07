@@ -17,6 +17,9 @@
       <li class="nav-item" *ngIf="!isAuth()">
         <button class="btn btn-primary float-md-right" routerLink="/iniciosesion">Inicie sesión</button>
       </li> 
+      <li class="nav-item" routerLinkActive="active" *ngIf="isAuth()">
+        <a class="nav-link" routerLink="/facturas">Facturas </a>
+      </li>
       <li class="nav-item" *ngIf="isAuth()">
         <button class="btn btn-primary float-md-right" (click)="onLogout()">Cerrar sesión</button> 
       </li>

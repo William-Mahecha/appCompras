@@ -7,10 +7,12 @@
       <label>Contraseña</label>
       <input type="password" id="inputPassword" class="form-control" formControlName="password" required>
       <hr>
-      <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Inicie sesión</button> 
+      <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid" *ngIf="!autenticando">Inicie sesión</button>
+      <button type="submit" class="btn btn-primary" *ngIf="autenticando">Autenticando usuario...</button>
     </form>
     <p class="alert alert-danger" *ngIf="mensaje">
       El usuario o contraseña no es correcto
     </p>
+    <p>Si no dispone de cuenta pulse <a routerLink="/registro">aquí</a></p>
   </div>
 </div>

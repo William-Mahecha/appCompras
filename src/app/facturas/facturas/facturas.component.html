@@ -1,0 +1,33 @@
+<h3>Listado de facturas</h3>
+<a class="btn btn-primary float-md-right" routerLink="/addfact">Añadir nuevo presupuesto</a>
+<br>
+<table class="table table-bordered table-striped tabla" style="margin-top: 40px;">  
+  <thead>
+    <tr class="filters">
+      <th>Id</th>
+      <th>Proveedor</th>
+      <th>Fecha</th>
+      <th>Valor</th>
+      <th>IVA</th>
+      <th>Total</th>
+      <th>Editar</th>
+      <th>Eliminar</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let factura of facturas">
+      <td>{{ factura.proveedor }}</td>
+      <td>{{ factura.fecha }}</td>
+      <td>{{ factura.valor }}</td>
+      <td>{{ factura.iva }}</td>
+      <td>{{ factura.total }}</td>
+      <td>
+        <button type="button" class="btn btn-success" routerLink="/editfact/{{ factura.id$ }}">Editar</button>
+      </td>
+      <td>
+        <button class="btn btn-danger" (click)="eliminarPresupuesto(presupuesto.id$)">Eliminar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
