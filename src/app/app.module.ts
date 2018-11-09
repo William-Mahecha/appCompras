@@ -1,8 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { environment } from '../environments/environment';
+
 import { PresupuestosService } from './servicios/presupuestos.service';
 import { ProveedoresService } from './servicios/proveedores.service';
+import { LoadfileService } from './servicios/loadfile.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,6 +31,8 @@ import { GuardService } from './servicios/guard.service';
 import { FacturasModule } from './facturas/facturas.module';
 import { FacturasComponent } from './facturas/facturas/facturas.component';
 import { AddfactComponent } from './facturas/addfact/addfact.component';
+import { UploadComponent } from './upload/upload.component';
+
 
 
 
@@ -39,6 +47,8 @@ const routes: Routes = [
   { path: 'iniciosesion', component: InisesComponent },
   { path: 'facturas', component: FacturasComponent },
   { path: 'addfact', component: AddfactComponent},
+  { path: 'uploads', component: UploadComponent },
+
   { path: '**', component: InicioComponent},
   ];
   
@@ -53,7 +63,8 @@ const routes: Routes = [
     PresupuestosComponent,
     EditpresComponent,
     RegistroComponent,
-    InisesComponent
+    InisesComponent,
+    UploadComponent
   ],
   imports: [
     BrowserModule,
@@ -62,10 +73,14 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    FacturasModule
+    FacturasModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
   ],
   providers: [ProveedoresService, 
     PresupuestosService,
+    LoadfileService,
     AutenticacionService],
   bootstrap: [AppComponent]
 })

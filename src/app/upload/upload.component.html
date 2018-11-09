@@ -1,0 +1,31 @@
+<div class="row">
+  <h3>Contratos</h3>
+</div>
+<hr>
+<div class="row">
+  <div class="col-md-2"> </div>
+  <div class="col-md-8 col-md-offset-2"> 
+    <div class="uploader">
+      <p style="font-size: 40px">
+        <i class="fa fa-file-pdf-o"></i>
+        <i class="fa fa-file-word-o" style="padding-left: 20px;"></i>
+        <i class="fa fa-file-excel-o" style="padding-left: 20px;"></i>
+        <i class="fa fa-file-picture-o" style="padding-left: 20px;"></i>
+      </p>
+      <label class="btn btn-default"> 
+        <input type="file"(change)="selectFile($event)">
+      </label>
+      <br>
+      <div class="text-center">
+        <button type="button" class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()"> Subir archivo</button>
+        <a class="btn btn-primary" routerLink="/">Cancelar</a>
+      </div>
+      <div *ngIf="currentFileUpload" class="progress">
+        <div class="progress-bar progress-bar-info progress-bar-striped" 
+          role="progressbar" attr.aria-valuenow="{{progress.porcentage}}" aria-valuemin="0" aria-valuemax="100"
+          [ngStyle]="{width:progress.porcentage+'%'}">{{progress.porcentage}}%
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
